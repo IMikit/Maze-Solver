@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Game" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/Ingesup.Maze.Server.Web.Models" />
+      <xs:element name="CreateGame">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Ingesup.Maze.Server.Web.Models" minOccurs="0" name="difficulty" type="q1:Difficulty" />
+            <xs:element minOccurs="0" name="playerName" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateGameResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Ingesup.Maze.Server.Web.Models" minOccurs="0" name="CreateGameResult" nillable="true" type="q2:PlayerGame" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="LoadGame">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="gameKey" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="LoadGameResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Ingesup.Maze.Server.Web.Models" minOccurs="0" name="LoadGameResult" nillable="true" type="q3:Game" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ResetGame">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="gameKey" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ResetGameResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Ingesup.Maze.Server.Web.Models" minOccurs="0" name="ResetGameResult" nillable="true" type="q4:Game" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="AddPlayer">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="gameKey" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="playerName" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="AddPlayerResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Ingesup.Maze.Server.Web.Models" minOccurs="0" name="AddPlayerResult" nillable="true" type="q5:Player" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="MovePlayer">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="gameKey" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="playerKey" nillable="true" type="xs:string" />
+            <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Ingesup.Maze.Server.Web.Models" minOccurs="0" name="direction" type="q6:Direction" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="MovePlayerResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Ingesup.Maze.Server.Web.Models" minOccurs="0" name="MovePlayerResult" nillable="true" type="q7:Player" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="anyType" nillable="true" type="xs:anyType" />
+      <xs:element name="anyURI" nillable="true" type="xs:anyURI" />
+      <xs:element name="base64Binary" nillable="true" type="xs:base64Binary" />
+      <xs:element name="boolean" nillable="true" type="xs:boolean" />
+      <xs:element name="byte" nillable="true" type="xs:byte" />
+      <xs:element name="dateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="decimal" nillable="true" type="xs:decimal" />
+      <xs:element name="double" nillable="true" type="xs:double" />
+      <xs:element name="float" nillable="true" type="xs:float" />
+      <xs:element name="int" nillable="true" type="xs:int" />
+      <xs:element name="long" nillable="true" type="xs:long" />
+      <xs:element name="QName" nillable="true" type="xs:QName" />
+      <xs:element name="short" nillable="true" type="xs:short" />
+      <xs:element name="string" nillable="true" type="xs:string" />
+      <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte" />
+      <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt" />
+      <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong" />
+      <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort" />
+      <xs:element name="char" nillable="true" type="tns:char" />
+      <xs:simpleType name="char">
+        <xs:restriction base="xs:int" />
+      </xs:simpleType>
+      <xs:element name="duration" nillable="true" type="tns:duration" />
+      <xs:simpleType name="duration">
+        <xs:restriction base="xs:duration">
+          <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?" />
+          <xs:minInclusive value="-P10675199DT2H48M5.4775808S" />
+          <xs:maxInclusive value="P10675199DT2H48M5.4775807S" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="guid" nillable="true" type="tns:guid" />
+      <xs:simpleType name="guid">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:attribute name="FactoryType" type="xs:QName" />
+      <xs:attribute name="Id" type="xs:ID" />
+      <xs:attribute name="Ref" type="xs:IDREF" />
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Ingesup.Maze.Server.Web.Models" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Ingesup.Maze.Server.Web.Models" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:simpleType name="Difficulty">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Easy" />
+          <xs:enumeration value="Medium" />
+          <xs:enumeration value="Hard" />
+          <xs:enumeration value="Extreme" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="Difficulty" nillable="true" type="tns:Difficulty" />
+      <xs:complexType name="PlayerGame">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Game">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="Player" nillable="true" type="tns:Player" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="PlayerGame" nillable="true" type="tns:PlayerGame" />
+      <xs:complexType name="Game">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CreateDate" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Creator" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Difficulty" type="tns:Difficulty" />
+          <xs:element minOccurs="0" name="Key" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Maze" nillable="true" type="tns:Maze" />
+          <xs:element minOccurs="0" name="MovePlayerMinInterval" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Game" nillable="true" type="tns:Game" />
+      <xs:complexType name="Maze">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Height" type="xs:int" />
+          <xs:element minOccurs="0" name="Width" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Maze" nillable="true" type="tns:Maze" />
+      <xs:complexType name="Player">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CreateDate" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CurrentPosition" nillable="true" type="tns:Position" />
+          <xs:element minOccurs="0" name="FinishDate" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FinishTime" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Key" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NbMove" type="xs:int" />
+          <xs:element minOccurs="0" name="SecretMessage" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="StartDate" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="VisibleCells" nillable="true" type="tns:ArrayOfCell" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Player" nillable="true" type="tns:Player" />
+      <xs:complexType name="Position">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="X" type="xs:int" />
+          <xs:element minOccurs="0" name="Y" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Position" nillable="true" type="tns:Position" />
+      <xs:complexType name="ArrayOfCell">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Cell" nillable="true" type="tns:Cell" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfCell" nillable="true" type="tns:ArrayOfCell" />
+      <xs:complexType name="Cell">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CellType" type="tns:CellType" />
+          <xs:element minOccurs="0" name="Position" nillable="true" type="tns:Position" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Cell" nillable="true" type="tns:Cell" />
+      <xs:simpleType name="CellType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Empty" />
+          <xs:enumeration value="Wall" />
+          <xs:enumeration value="Start" />
+          <xs:enumeration value="End" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="CellType" nillable="true" type="tns:CellType" />
+      <xs:simpleType name="Direction">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Up" />
+          <xs:enumeration value="Right" />
+          <xs:enumeration value="Down" />
+          <xs:enumeration value="Left" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="Direction" nillable="true" type="tns:Direction" />
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="IGame_CreateGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateGame" />
+  </wsdl:message>
+  <wsdl:message name="IGame_CreateGame_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateGameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGame_LoadGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:LoadGame" />
+  </wsdl:message>
+  <wsdl:message name="IGame_LoadGame_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoadGameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGame_ResetGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:ResetGame" />
+  </wsdl:message>
+  <wsdl:message name="IGame_ResetGame_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ResetGameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGame_AddPlayer_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddPlayer" />
+  </wsdl:message>
+  <wsdl:message name="IGame_AddPlayer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddPlayerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGame_MovePlayer_InputMessage">
+    <wsdl:part name="parameters" element="tns:MovePlayer" />
+  </wsdl:message>
+  <wsdl:message name="IGame_MovePlayer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MovePlayerResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IGame">
+    <wsdl:operation name="CreateGame">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGame/CreateGame" message="tns:IGame_CreateGame_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGame/CreateGameResponse" message="tns:IGame_CreateGame_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LoadGame">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGame/LoadGame" message="tns:IGame_LoadGame_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGame/LoadGameResponse" message="tns:IGame_LoadGame_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ResetGame">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGame/ResetGame" message="tns:IGame_ResetGame_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGame/ResetGameResponse" message="tns:IGame_ResetGame_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddPlayer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGame/AddPlayer" message="tns:IGame_AddPlayer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGame/AddPlayerResponse" message="tns:IGame_AddPlayer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MovePlayer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGame/MovePlayer" message="tns:IGame_MovePlayer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGame/MovePlayerResponse" message="tns:IGame_MovePlayer_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IGame" type="tns:IGame">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateGame">
+      <soap:operation soapAction="http://tempuri.org/IGame/CreateGame" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadGame">
+      <soap:operation soapAction="http://tempuri.org/IGame/LoadGame" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResetGame">
+      <soap:operation soapAction="http://tempuri.org/IGame/ResetGame" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddPlayer">
+      <soap:operation soapAction="http://tempuri.org/IGame/AddPlayer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MovePlayer">
+      <soap:operation soapAction="http://tempuri.org/IGame/MovePlayer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Game">
+    <wsdl:port name="BasicHttpBinding_IGame" binding="tns:BasicHttpBinding_IGame">
+      <soap:address location="http://ingesup-maze.azurewebsites.net/WCF/Game.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
