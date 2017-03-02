@@ -42,7 +42,7 @@ namespace MazeSolver
             foreach (Cell cell in playerGame.Player.VisibleCells)
             {
                 map[cell.Position.Y][cell.Position.X] = cell.CellType.ToString().Substring(0, 1);
-                Console.WriteLine(cell.Position.Y + " " + cell.Position.X);
+                //Console.WriteLine(cell.Position.Y + " " + cell.Position.X);
                 if (cell.CellType == CellType.Empty)
                 {
                     map[cell.Position.Y][cell.Position.X] = " ";

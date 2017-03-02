@@ -13,31 +13,39 @@ namespace MazeSolver
 
         static void Main(string[] args)
         {
-
-            gameHelper = new GameHelper();
-
-            Difficulty difficulty = chooseDifficulty();
-            //bool mode = isManualMode();
-            gameHelper.initNewGame(difficulty, "Player1");
-            Console.WriteLine("\n/* Partie " + difficulty + " commencée *\\\n");
-
-            displayMap(gameHelper.getVisiblesCells());
-            System.Threading.Thread.Sleep(500);
-
-            /*if (mode)
-            {*/
-                runManualMode();
-            /*}
-            else
+            string input = "";
+            while (input != "quit" && input != "exit" && input != "return")
             {
-                runAutoMode();
-            }*/
+                Console.Clear();
+                gameHelper = new GameHelper();
 
-            gameHelper.closeGame();
+                Difficulty difficulty = chooseDifficulty();
+                //bool mode = isManualMode();
+                gameHelper.initNewGame(difficulty, "Player1");
+                Console.WriteLine("/* Partie " + difficulty + " commencée *\\");
+
+                displayMap(gameHelper.getVisiblesCells());
+                System.Threading.Thread.Sleep(500);
+
+                /*if (mode)
+                {*/
+                runManualMode();
+                /*}
+                else
+                {
+                    runAutoMode();
+                }*/
+
+                gameHelper.closeGame();
+                Console.Clear();
+                Console.WriteLine("tapez exit pour quitter le jeu, ou autre chose pour commencer une nouvelle partie.");
+                input = Console.ReadLine();
+            }
         }
 
         private static bool displayMap(string[][] map)
         {
+            Console.Clear();
             bool isFinished = false;
             foreach (string[] x in map)
             {
@@ -108,32 +116,36 @@ namespace MazeSolver
         private static void runManualMode()
         {
             string input = Console.ReadLine();
-            while (input != "quit" && input != "exit")
+            while (input != "quit" && input != "exit" && input != "return")
             {
-                switch (input)
+                bool isMoved=false;
+                switch (input.LastOrDefault())
                 {
-                    case "d":
-                        gameHelper.move(Direction.Right);
+                    case 'd':
+                        isMoved = gameHelper.move(Direction.Right);
                         break;
-                    case "q":
-                        gameHelper.move(Direction.Left);
+                    case 'q':
+                        isMoved = gameHelper.move(Direction.Left);
                         break;
-                    case "z":
-                        gameHelper.move(Direction.Up);
+                    case 'z':
+                        isMoved = gameHelper.move(Direction.Up);
                         break;
-                    case "s":
-                        gameHelper.move(Direction.Down);
+                    case 's':
+                        isMoved = gameHelper.move(Direction.Down);
                         break;
                     default:
-                        Console.WriteLine("\n\nVeuillez entrer un input valide\n");
+                        Console.WriteLine("Veuillez entrer un input valide");
                         break;
                 }
-                if (displayMap(gameHelper.getVisiblesCells()))
+                if (isMoved)
                 {
-                    Console.WriteLine("\nFin du labyrinthe trouvée : ");
-                    Console.WriteLine(gameHelper.getEndTag());
-
+                    if (displayMap(gameHelper.getVisiblesCells()))
+                    {
+                        Console.WriteLine("Fin du labyrinthe trouvée : ");
+                        Console.WriteLine(gameHelper.getEndTag());
+                    }
                 }
+
                 System.Threading.Thread.Sleep(500);
                 input = Console.ReadLine();
             }
