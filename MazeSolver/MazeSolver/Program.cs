@@ -19,26 +19,29 @@ namespace MazeSolver
                 Console.Clear();
                 gameHelper = new GameHelper();
 
-                Difficulty difficulty = chooseDifficulty();
-                //bool mode = isManualMode();
-                gameHelper.initNewGame(difficulty, "Player1");
-                Console.WriteLine("/* Partie " + difficulty + " commencée *\\");
+            gameHelper = new GameHelper();
+
+            Difficulty difficulty = chooseDifficulty();
+            bool mode = isManualMode();
+            gameHelper.initNewGame(difficulty, "Player1");
+            Console.WriteLine("\n/* Partie " + difficulty + " commencée en " + (mode ? "manuel" : "automatique") + "*\\\n");
 
                 displayMap(gameHelper.getVisiblesCells());
                 System.Threading.Thread.Sleep(500);
 
-                /*if (mode)
-                {*/
+
+            if (mode)
+            {
                 runManualMode();
-                /*}
-                else
-                {
-                    runAutoMode();
-                }*/
+            }
+            else
+            {
+                runAutoMode();
+            }
 
                 gameHelper.closeGame();
                 Console.Clear();
-                Console.WriteLine("tapez exit pour quitter le jeu, ou autre chose pour commencer une nouvelle partie.");
+                Console.WriteLine("Tapez exit pour quitter le jeu, ou autre chose pour commencer une nouvelle partie.");
                 input = Console.ReadLine();
             }
         }
@@ -58,7 +61,7 @@ namespace MazeSolver
                     }
                     tmpString += " " + xy;
                 }
-                Console.WriteLine(tmpString);
+                Console.WriteLine("Nouvelle ligne : " + tmpString);
             }
             return isFinished;
         }
@@ -154,11 +157,38 @@ namespace MazeSolver
 
         private static void runAutoMode()
         {
-            bool endIsReached = false;
+            Bot bot = new Bot(gameHelper);
+            bool endIsNear = false;
             do
             {
+                Direction tmpDirection = bot.chooseDirection();
+                displayMap(gameHelper.getVisiblesCells());
+                autoStraightMove(tmpDirection, bot);
 
-            } while (!endIsReached);
+                System.Threading.Thread.Sleep(500);
+            } while (!endIsNear);
+        }
+        //TODO 
+        private static void autoStraightMove(Direction direction, Bot bot)
+        {
+            
+            bool isWallInFront = gameHelper.move(direction);
+            bool isACarrefour = false;
+            while (!isWallInFront && !isACarrefour)
+            {
+
+                System.Threading.Thread.Sleep(500);
+                isWallInFront = gameHelper.move(direction);
+                isACarrefour = gameHelper.getNumberOfWay() > 2;
+                Console.WriteLine("\nBefore display map " + gameHelper.getNumberOfWay());
+                if (displayMap(gameHelper.getVisiblesCells()))
+                {
+                    Console.WriteLine("\nFin du labyrinthe trouvée : ");
+                    Console.WriteLine(gameHelper.getEndTag());
+
+                }
+                Console.ReadLine();
+            }
         }
     }
 }
