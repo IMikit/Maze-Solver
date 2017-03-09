@@ -171,19 +171,17 @@ namespace MazeSolver
         {
             if(directionOfLast == Direction.Left)
             {
-                Console.Write("Coming from Left");
                 return checkFromLeft(getWalkableCell());
             }
             else if(directionOfLast == Direction.Up)
             {
-                Console.Write("Coming from Up");
                 return checkFromUp(getWalkableCell());
             }
             else if(directionOfLast == Direction.Right)
             {
-                Console.Write("Coming from Right");
                 return checkFromRight(getWalkableCell());
             }
+            Console.WriteLine("Come from bottom");
             return checkFromDown(getWalkableCell());
         }
 

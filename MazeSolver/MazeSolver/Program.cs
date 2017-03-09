@@ -112,6 +112,7 @@ namespace MazeSolver
                         return false;
                 }
             } while (input != "1" && input != "2");
+
             return true;
         }
 
@@ -162,11 +163,17 @@ namespace MazeSolver
             do
             {
                 Direction tmpDirection = bot.chooseDirection();
+
                 displayMap(gameHelper.getVisiblesCells());
+
+                endIsNear = displayMap(gameHelper.getVisiblesCells());
                 autoStraightMove(tmpDirection, bot);
 
                 System.Threading.Thread.Sleep(500);
             } while (!endIsNear);
+            Console.WriteLine("\nFin du labyrinthe trouvée : ");
+            Console.WriteLine(gameHelper.getEndTag());
+            Console.ReadLine();
         }
         //TODO 
         private static void autoStraightMove(Direction direction, Bot bot)

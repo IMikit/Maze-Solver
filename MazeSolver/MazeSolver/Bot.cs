@@ -26,18 +26,18 @@ namespace MazeSolver
 
         private Direction whereWasLastPosition()
         {
-            if(gameHelper.getPlayerPosition().X == gameHelper.getPlayerPosition().X &&
-                gameHelper.getPlayerPosition().Y < gameHelper.getPlayerPosition().Y)
+            if(gameHelper.getLastPosition().X == gameHelper.getPlayerPosition().X &&
+                gameHelper.getLastPosition().Y < gameHelper.getPlayerPosition().Y)
             {
                 return Direction.Up;
             }
-            else if(gameHelper.getPlayerPosition().X > gameHelper.getPlayerPosition().X &&
-                gameHelper.getPlayerPosition().Y == gameHelper.getPlayerPosition().Y)
+            else if(gameHelper.getLastPosition().X > gameHelper.getPlayerPosition().X &&
+                gameHelper.getLastPosition().Y == gameHelper.getPlayerPosition().Y)
             {
                 return Direction.Right;
             }
-            else if (gameHelper.getPlayerPosition().X == gameHelper.getPlayerPosition().X &&
-              gameHelper.getPlayerPosition().Y > gameHelper.getPlayerPosition().Y)
+            else if (gameHelper.getLastPosition().X == gameHelper.getPlayerPosition().X &&
+              gameHelper.getLastPosition().Y > gameHelper.getPlayerPosition().Y)
             {
                 return Direction.Down;
             }
