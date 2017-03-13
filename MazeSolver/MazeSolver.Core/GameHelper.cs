@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Drawing;
-using MazeSolver.ServiceReference1;
+using MazeSolver.Core.Game;
 using System.Collections.Generic;
-using System.Linq;
+using System.Drawing;
 
 namespace MazeSolver
 {

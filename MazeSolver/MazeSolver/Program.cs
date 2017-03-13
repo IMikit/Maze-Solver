@@ -1,4 +1,5 @@
-﻿using MazeSolver.ServiceReference1;
+﻿using MazeSolver.Core;
+using MazeSolver.Core.Game;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -61,7 +62,7 @@ namespace MazeSolver
                     }
                     tmpString += " " + xy;
                 }
-                Console.WriteLine("Nouvelle ligne : " + tmpString);
+                Console.WriteLine(tmpString);
             }
             return isFinished;
         }

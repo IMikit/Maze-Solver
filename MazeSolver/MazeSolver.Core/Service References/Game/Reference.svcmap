@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="51d1d1ec-283f-4600-b672-ff39f056f979" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="a5f68e5e-cd79-4a51-a6df-13ee7dff8955" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,7 +22,7 @@
     <MetadataSource Address="http://ingesup-maze.azurewebsites.net/WCF/Game.svc?singleWsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Game.wsdl" MetadataType="Wsdl" ID="1419671a-e1c8-45a4-a7d0-80265c9c4e40" SourceId="1" SourceUrl="http://ingesup-maze.azurewebsites.net/WCF/Game.svc?singleWsdl" />
+    <MetadataFile FileName="Game.wsdl" MetadataType="Wsdl" ID="17a0ec83-7149-4de9-a9a8-ac93c84c795c" SourceId="1" SourceUrl="http://ingesup-maze.azurewebsites.net/WCF/Game.svc?singleWsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

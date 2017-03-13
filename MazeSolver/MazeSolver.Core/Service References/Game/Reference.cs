@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MazeSolver.ServiceReference1 {
+namespace MazeSolver.Core.Game {
     using System.Runtime.Serialization;
     using System;
     
@@ -34,7 +34,7 @@ namespace MazeSolver.ServiceReference1 {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Game", Namespace="http://schemas.datacontract.org/2004/07/Ingesup.Maze.Server.Web.Models")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MazeSolver.ServiceReference1.PlayerGame))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MazeSolver.Core.Game.PlayerGame))]
     public partial class Game : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
@@ -47,13 +47,13 @@ namespace MazeSolver.ServiceReference1 {
         private string CreatorField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private MazeSolver.ServiceReference1.Difficulty DifficultyField;
+        private MazeSolver.Core.Game.Difficulty DifficultyField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string KeyField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private MazeSolver.ServiceReference1.Maze MazeField;
+        private MazeSolver.Core.Game.Maze MazeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int MovePlayerMinIntervalField;
@@ -95,7 +95,7 @@ namespace MazeSolver.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public MazeSolver.ServiceReference1.Difficulty Difficulty {
+        public MazeSolver.Core.Game.Difficulty Difficulty {
             get {
                 return this.DifficultyField;
             }
@@ -121,7 +121,7 @@ namespace MazeSolver.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public MazeSolver.ServiceReference1.Maze Maze {
+        public MazeSolver.Core.Game.Maze Maze {
             get {
                 return this.MazeField;
             }
@@ -221,13 +221,13 @@ namespace MazeSolver.ServiceReference1 {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="PlayerGame", Namespace="http://schemas.datacontract.org/2004/07/Ingesup.Maze.Server.Web.Models")]
     [System.SerializableAttribute()]
-    public partial class PlayerGame : MazeSolver.ServiceReference1.Game {
+    public partial class PlayerGame : MazeSolver.Core.Game.Game {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private MazeSolver.ServiceReference1.Player PlayerField;
+        private MazeSolver.Core.Game.Player PlayerField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public MazeSolver.ServiceReference1.Player Player {
+        public MazeSolver.Core.Game.Player Player {
             get {
                 return this.PlayerField;
             }
@@ -253,7 +253,7 @@ namespace MazeSolver.ServiceReference1 {
         private string CreateDateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private MazeSolver.ServiceReference1.Position CurrentPositionField;
+        private MazeSolver.Core.Game.Position CurrentPositionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string FinishDateField;
@@ -280,7 +280,7 @@ namespace MazeSolver.ServiceReference1 {
         private string StartDateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private MazeSolver.ServiceReference1.Cell[] VisibleCellsField;
+        private MazeSolver.Core.Game.Cell[] VisibleCellsField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -306,7 +306,7 @@ namespace MazeSolver.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public MazeSolver.ServiceReference1.Position CurrentPosition {
+        public MazeSolver.Core.Game.Position CurrentPosition {
             get {
                 return this.CurrentPositionField;
             }
@@ -423,7 +423,7 @@ namespace MazeSolver.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public MazeSolver.ServiceReference1.Cell[] VisibleCells {
+        public MazeSolver.Core.Game.Cell[] VisibleCells {
             get {
                 return this.VisibleCellsField;
             }
@@ -516,10 +516,10 @@ namespace MazeSolver.ServiceReference1 {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private MazeSolver.ServiceReference1.CellType CellTypeField;
+        private MazeSolver.Core.Game.CellType CellTypeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private MazeSolver.ServiceReference1.Position PositionField;
+        private MazeSolver.Core.Game.Position PositionField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -532,7 +532,7 @@ namespace MazeSolver.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public MazeSolver.ServiceReference1.CellType CellType {
+        public MazeSolver.Core.Game.CellType CellType {
             get {
                 return this.CellTypeField;
             }
@@ -545,7 +545,7 @@ namespace MazeSolver.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public MazeSolver.ServiceReference1.Position Position {
+        public MazeSolver.Core.Game.Position Position {
             get {
                 return this.PositionField;
             }
@@ -602,47 +602,47 @@ namespace MazeSolver.ServiceReference1 {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IGame")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Game.IGame")]
     public interface IGame {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGame/CreateGame", ReplyAction="http://tempuri.org/IGame/CreateGameResponse")]
-        MazeSolver.ServiceReference1.PlayerGame CreateGame(MazeSolver.ServiceReference1.Difficulty difficulty, string playerName);
+        MazeSolver.Core.Game.PlayerGame CreateGame(MazeSolver.Core.Game.Difficulty difficulty, string playerName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGame/CreateGame", ReplyAction="http://tempuri.org/IGame/CreateGameResponse")]
-        System.Threading.Tasks.Task<MazeSolver.ServiceReference1.PlayerGame> CreateGameAsync(MazeSolver.ServiceReference1.Difficulty difficulty, string playerName);
+        System.Threading.Tasks.Task<MazeSolver.Core.Game.PlayerGame> CreateGameAsync(MazeSolver.Core.Game.Difficulty difficulty, string playerName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGame/LoadGame", ReplyAction="http://tempuri.org/IGame/LoadGameResponse")]
-        MazeSolver.ServiceReference1.Game LoadGame(string gameKey);
+        MazeSolver.Core.Game.Game LoadGame(string gameKey);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGame/LoadGame", ReplyAction="http://tempuri.org/IGame/LoadGameResponse")]
-        System.Threading.Tasks.Task<MazeSolver.ServiceReference1.Game> LoadGameAsync(string gameKey);
+        System.Threading.Tasks.Task<MazeSolver.Core.Game.Game> LoadGameAsync(string gameKey);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGame/ResetGame", ReplyAction="http://tempuri.org/IGame/ResetGameResponse")]
-        MazeSolver.ServiceReference1.Game ResetGame(string gameKey);
+        MazeSolver.Core.Game.Game ResetGame(string gameKey);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGame/ResetGame", ReplyAction="http://tempuri.org/IGame/ResetGameResponse")]
-        System.Threading.Tasks.Task<MazeSolver.ServiceReference1.Game> ResetGameAsync(string gameKey);
+        System.Threading.Tasks.Task<MazeSolver.Core.Game.Game> ResetGameAsync(string gameKey);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGame/AddPlayer", ReplyAction="http://tempuri.org/IGame/AddPlayerResponse")]
-        MazeSolver.ServiceReference1.Player AddPlayer(string gameKey, string playerName);
+        MazeSolver.Core.Game.Player AddPlayer(string gameKey, string playerName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGame/AddPlayer", ReplyAction="http://tempuri.org/IGame/AddPlayerResponse")]
-        System.Threading.Tasks.Task<MazeSolver.ServiceReference1.Player> AddPlayerAsync(string gameKey, string playerName);
+        System.Threading.Tasks.Task<MazeSolver.Core.Game.Player> AddPlayerAsync(string gameKey, string playerName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGame/MovePlayer", ReplyAction="http://tempuri.org/IGame/MovePlayerResponse")]
-        MazeSolver.ServiceReference1.Player MovePlayer(string gameKey, string playerKey, MazeSolver.ServiceReference1.Direction direction);
+        MazeSolver.Core.Game.Player MovePlayer(string gameKey, string playerKey, MazeSolver.Core.Game.Direction direction);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGame/MovePlayer", ReplyAction="http://tempuri.org/IGame/MovePlayerResponse")]
-        System.Threading.Tasks.Task<MazeSolver.ServiceReference1.Player> MovePlayerAsync(string gameKey, string playerKey, MazeSolver.ServiceReference1.Direction direction);
+        System.Threading.Tasks.Task<MazeSolver.Core.Game.Player> MovePlayerAsync(string gameKey, string playerKey, MazeSolver.Core.Game.Direction direction);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IGameChannel : MazeSolver.ServiceReference1.IGame, System.ServiceModel.IClientChannel {
+    public interface IGameChannel : MazeSolver.Core.Game.IGame, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class GameClient : System.ServiceModel.ClientBase<MazeSolver.ServiceReference1.IGame>, MazeSolver.ServiceReference1.IGame {
+    public partial class GameClient : System.ServiceModel.ClientBase<MazeSolver.Core.Game.IGame>, MazeSolver.Core.Game.IGame {
         
         public GameClient() {
         }
@@ -663,43 +663,43 @@ namespace MazeSolver.ServiceReference1 {
                 base(binding, remoteAddress) {
         }
         
-        public MazeSolver.ServiceReference1.PlayerGame CreateGame(MazeSolver.ServiceReference1.Difficulty difficulty, string playerName) {
+        public MazeSolver.Core.Game.PlayerGame CreateGame(MazeSolver.Core.Game.Difficulty difficulty, string playerName) {
             return base.Channel.CreateGame(difficulty, playerName);
         }
         
-        public System.Threading.Tasks.Task<MazeSolver.ServiceReference1.PlayerGame> CreateGameAsync(MazeSolver.ServiceReference1.Difficulty difficulty, string playerName) {
+        public System.Threading.Tasks.Task<MazeSolver.Core.Game.PlayerGame> CreateGameAsync(MazeSolver.Core.Game.Difficulty difficulty, string playerName) {
             return base.Channel.CreateGameAsync(difficulty, playerName);
         }
         
-        public MazeSolver.ServiceReference1.Game LoadGame(string gameKey) {
+        public MazeSolver.Core.Game.Game LoadGame(string gameKey) {
             return base.Channel.LoadGame(gameKey);
         }
         
-        public System.Threading.Tasks.Task<MazeSolver.ServiceReference1.Game> LoadGameAsync(string gameKey) {
+        public System.Threading.Tasks.Task<MazeSolver.Core.Game.Game> LoadGameAsync(string gameKey) {
             return base.Channel.LoadGameAsync(gameKey);
         }
         
-        public MazeSolver.ServiceReference1.Game ResetGame(string gameKey) {
+        public MazeSolver.Core.Game.Game ResetGame(string gameKey) {
             return base.Channel.ResetGame(gameKey);
         }
         
-        public System.Threading.Tasks.Task<MazeSolver.ServiceReference1.Game> ResetGameAsync(string gameKey) {
+        public System.Threading.Tasks.Task<MazeSolver.Core.Game.Game> ResetGameAsync(string gameKey) {
             return base.Channel.ResetGameAsync(gameKey);
         }
         
-        public MazeSolver.ServiceReference1.Player AddPlayer(string gameKey, string playerName) {
+        public MazeSolver.Core.Game.Player AddPlayer(string gameKey, string playerName) {
             return base.Channel.AddPlayer(gameKey, playerName);
         }
         
-        public System.Threading.Tasks.Task<MazeSolver.ServiceReference1.Player> AddPlayerAsync(string gameKey, string playerName) {
+        public System.Threading.Tasks.Task<MazeSolver.Core.Game.Player> AddPlayerAsync(string gameKey, string playerName) {
             return base.Channel.AddPlayerAsync(gameKey, playerName);
         }
         
-        public MazeSolver.ServiceReference1.Player MovePlayer(string gameKey, string playerKey, MazeSolver.ServiceReference1.Direction direction) {
+        public MazeSolver.Core.Game.Player MovePlayer(string gameKey, string playerKey, MazeSolver.Core.Game.Direction direction) {
             return base.Channel.MovePlayer(gameKey, playerKey, direction);
         }
         
-        public System.Threading.Tasks.Task<MazeSolver.ServiceReference1.Player> MovePlayerAsync(string gameKey, string playerKey, MazeSolver.ServiceReference1.Direction direction) {
+        public System.Threading.Tasks.Task<MazeSolver.Core.Game.Player> MovePlayerAsync(string gameKey, string playerKey, MazeSolver.Core.Game.Direction direction) {
             return base.Channel.MovePlayerAsync(gameKey, playerKey, direction);
         }
     }
