@@ -1,10 +1,6 @@
-﻿using MazeSolver.Core;
-using MazeSolver.Core.Game;
+﻿using MazeSolver.Core.Game;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MazeSolver
 {
@@ -147,6 +143,10 @@ namespace MazeSolver
                         Console.WriteLine("Fin du labyrinthe trouvée : ");
                         Console.WriteLine(gameHelper.getEndTag());
                     }
+                }
+                else
+                {
+                    Console.WriteLine("Impossible de se déplacer dans cette direction");
                 }
 
                 System.Threading.Thread.Sleep(500);
