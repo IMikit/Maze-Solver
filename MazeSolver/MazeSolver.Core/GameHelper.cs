@@ -7,13 +7,12 @@ namespace MazeSolver
 {
     public class GameHelper
     {
-
+        
         private GameClient gameClient { get; set; }
         private PlayerGame playerGame { get; set; }
         private Game game { get; set; }
         private string[][] map { get; set; }
         private bool isManualMode { get; set; }
-
         private Position lastPosition { get; set; }
         private Position[] walkableCells { get; set; }
 
@@ -31,7 +30,6 @@ namespace MazeSolver
             lastPosition.Y = 1;
             initMap();
         }
-
 
         public Size getDimensions()
         {
@@ -64,7 +62,6 @@ namespace MazeSolver
             return map;
         }
 
-
         public Position getPlayerPosition()
         {
             return playerGame.Player.CurrentPosition;
@@ -95,28 +92,6 @@ namespace MazeSolver
             return nbOfWay;
         }
 
-
-        public List<Direction> getWalkableCell()
-        {
-            List<Direction> walkableCells = new List<Direction>();
-            foreach (Cell cell in playerGame.Player.VisibleCells)
-            {
-                if ((playerGame.Player.CurrentPosition.X == cell.Position.X && playerGame.Player.CurrentPosition.Y == cell.Position.Y - 1 ||
-                    playerGame.Player.CurrentPosition.X == cell.Position.X && playerGame.Player.CurrentPosition.Y == cell.Position.Y + 1 ||
-                    playerGame.Player.CurrentPosition.X - 1 == cell.Position.X && playerGame.Player.CurrentPosition.Y == cell.Position.Y ||
-                    playerGame.Player.CurrentPosition.X + 1 == cell.Position.X && playerGame.Player.CurrentPosition.Y == cell.Position.Y) &&
-                    (cell.CellType == CellType.Empty || CellType.Start == cell.CellType || CellType.End == cell.CellType))
-                {
-                    if(cell.Position.X == lastPosition.X && cell.Position.Y == lastPosition.Y)
-                    {
-                        continue;
-                    }
-                    walkableCells.Add(convertPositionToDirection(cell.Position));
-                }
-            }
-            return walkableCells;
-        }
-
         public bool move(Direction direction)
         {
             int tmpX = playerGame.Player.CurrentPosition.X;
@@ -138,34 +113,7 @@ namespace MazeSolver
             Console.WriteLine("Impossible de se déplacer dans cette direction");
             return false;
         }
-
        
-        private Direction convertPositionToDirection(Position positionToCompare)
-        {
-            
-            if (positionToCompare.X == playerGame.Player.CurrentPosition.X &&
-                positionToCompare.Y < playerGame.Player.CurrentPosition.Y)
-            {
-                return Direction.Up;
-            }
-            else if (positionToCompare.X > playerGame.Player.CurrentPosition.X &&
-                positionToCompare.Y == playerGame.Player.CurrentPosition.Y)
-            {
-                return Direction.Right;
-            }
-            else if (positionToCompare.X == playerGame.Player.CurrentPosition.X &&
-              positionToCompare.Y > playerGame.Player.CurrentPosition.Y)
-            {
-                return Direction.Down;
-            }
-            else if (positionToCompare.X < playerGame.Player.CurrentPosition.X &&
-                      positionToCompare.Y == playerGame.Player.CurrentPosition.Y)
-            {
-                return Direction.Left;
-            }
-            return Direction.Down;
-        }
-
         public Direction clockRoundCheck(Direction directionOfLast)
         {
             if(directionOfLast == Direction.Left)
@@ -184,23 +132,51 @@ namespace MazeSolver
             return checkFromDown(getWalkableCell());
         }
 
+        public string getEndTag()
+        {
+            return playerGame.Player.SecretMessage;
+        }
+
+        public void closeGame()
+        {
+            gameClient.Close();
+        }
+
+        private void initMap()
+        {
+            map = new string[playerGame.Maze.Height][];
+            for (int i = 0; i < playerGame.Maze.Height; i++)
+            {
+                map[i] = new string[playerGame.Maze.Width];
+            }
+            for (int i = 0; i < playerGame.Maze.Height; i++)
+            {
+                for (int j = 0; j < playerGame.Maze.Width; j++)
+                {
+                    map[i][j] = " ";
+                }
+            }
+        }
+
         /* Following methods do a roundclock check to return the next path with left hand on wall */
         /* Bloxk RoundClock check */
-        public Direction checkFromLeft(List<Direction> walkableDirections)
+        private Direction checkFromLeft(List<Direction> walkableDirections)
         {
-            if(walkableDirections.Contains(Direction.Up)) 
+            if (walkableDirections.Contains(Direction.Up))
             {
                 return Direction.Up;
-            } else if(walkableDirections.Contains(Direction.Right))
+            }
+            else if (walkableDirections.Contains(Direction.Right))
             {
                 return Direction.Right;
-            } else if(walkableDirections.Contains(Direction.Down))
+            }
+            else if (walkableDirections.Contains(Direction.Down))
             {
                 return Direction.Down;
             }
             return Direction.Left;
         }
-        public Direction checkFromUp(List<Direction> walkableDirections)
+        private Direction checkFromUp(List<Direction> walkableDirections)
         {
             if (walkableDirections.Contains(Direction.Right))
             {
@@ -209,13 +185,14 @@ namespace MazeSolver
             else if (walkableDirections.Contains(Direction.Down))
             {
                 return Direction.Down;
-            } else if (walkableDirections.Contains(Direction.Left))
+            }
+            else if (walkableDirections.Contains(Direction.Left))
             {
                 return Direction.Left;
             }
             return Direction.Up;
         }
-        public Direction checkFromRight(List<Direction> walkableDirections)
+        private Direction checkFromRight(List<Direction> walkableDirections)
         {
             if (walkableDirections.Contains(Direction.Down))
             {
@@ -225,13 +202,13 @@ namespace MazeSolver
             {
                 return Direction.Left;
             }
-            else if(walkableDirections.Contains(Direction.Up))
+            else if (walkableDirections.Contains(Direction.Up))
             {
                 return Direction.Up;
             }
             return Direction.Right;
         }
-        public Direction checkFromDown(List<Direction> walkableDirections)
+        private Direction checkFromDown(List<Direction> walkableDirections)
         {
             if (walkableDirections.Contains(Direction.Left))
             {
@@ -241,7 +218,7 @@ namespace MazeSolver
             {
                 return Direction.Up;
             }
-            else if(walkableDirections.Contains(Direction.Right))
+            else if (walkableDirections.Contains(Direction.Right))
             {
                 return Direction.Right;
             }
@@ -249,8 +226,7 @@ namespace MazeSolver
         }
         /* Endblock RoundClock Check */
 
-
-        public bool verifiyDestination(Direction direction)
+        private bool verifiyDestination(Direction direction)
         {
             if (direction == Direction.Right && "W" !=
                 getVisiblesCells()[playerGame.Player.CurrentPosition.Y][playerGame.Player.CurrentPosition.X + 1])
@@ -275,30 +251,51 @@ namespace MazeSolver
             return false;
         }
 
-        public string getEndTag()
+        private Direction convertPositionToDirection(Position positionToCompare)
         {
-            return playerGame.Player.SecretMessage;
+
+            if (positionToCompare.X == playerGame.Player.CurrentPosition.X &&
+                positionToCompare.Y < playerGame.Player.CurrentPosition.Y)
+            {
+                return Direction.Up;
+            }
+            else if (positionToCompare.X > playerGame.Player.CurrentPosition.X &&
+                positionToCompare.Y == playerGame.Player.CurrentPosition.Y)
+            {
+                return Direction.Right;
+            }
+            else if (positionToCompare.X == playerGame.Player.CurrentPosition.X &&
+              positionToCompare.Y > playerGame.Player.CurrentPosition.Y)
+            {
+                return Direction.Down;
+            }
+            else if (positionToCompare.X < playerGame.Player.CurrentPosition.X &&
+                      positionToCompare.Y == playerGame.Player.CurrentPosition.Y)
+            {
+                return Direction.Left;
+            }
+            return Direction.Down;
         }
 
-        private void initMap()
+        private List<Direction> getWalkableCell()
         {
-            map = new string[playerGame.Maze.Height][];
-            for (int i = 0; i < playerGame.Maze.Height; i++)
+            List<Direction> walkableCells = new List<Direction>();
+            foreach (Cell cell in playerGame.Player.VisibleCells)
             {
-                map[i] = new string[playerGame.Maze.Width];
-            }
-            for (int i = 0; i < playerGame.Maze.Height; i++)
-            {
-                for (int j = 0; j < playerGame.Maze.Width; j++)
+                if ((playerGame.Player.CurrentPosition.X == cell.Position.X && playerGame.Player.CurrentPosition.Y == cell.Position.Y - 1 ||
+                    playerGame.Player.CurrentPosition.X == cell.Position.X && playerGame.Player.CurrentPosition.Y == cell.Position.Y + 1 ||
+                    playerGame.Player.CurrentPosition.X - 1 == cell.Position.X && playerGame.Player.CurrentPosition.Y == cell.Position.Y ||
+                    playerGame.Player.CurrentPosition.X + 1 == cell.Position.X && playerGame.Player.CurrentPosition.Y == cell.Position.Y) &&
+                    (cell.CellType == CellType.Empty || CellType.Start == cell.CellType || CellType.End == cell.CellType))
                 {
-                    map[i][j] = " ";
+                    if (cell.Position.X == lastPosition.X && cell.Position.Y == lastPosition.Y)
+                    {
+                        continue;
+                    }
+                    walkableCells.Add(convertPositionToDirection(cell.Position));
                 }
             }
-        }
-
-        public void closeGame()
-        {
-            gameClient.Close();
+            return walkableCells;
         }
 
     }
