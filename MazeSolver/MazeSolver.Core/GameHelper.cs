@@ -1,5 +1,4 @@
-﻿using System;
-using MazeSolver.Core.Game;
+﻿using MazeSolver.Core.Game;
 using System.Collections.Generic;
 using System.Drawing;
 
@@ -110,7 +109,6 @@ namespace MazeSolver
 
             }
 
-            Console.WriteLine("Impossible de se déplacer dans cette direction");
             return false;
         }
 
@@ -128,7 +126,6 @@ namespace MazeSolver
             {
                 return checkFromRight(getWalkableCell());
             }
-            Console.WriteLine("Come from bottom");
             return checkFromDown(getWalkableCell());
         }
 
