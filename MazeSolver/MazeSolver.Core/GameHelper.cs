@@ -7,7 +7,7 @@ namespace MazeSolver
 {
     public class GameHelper
     {
-        
+
         private GameClient gameClient { get; set; }
         private PlayerGame playerGame { get; set; }
         private Game game { get; set; }
@@ -79,11 +79,11 @@ namespace MazeSolver
         {
             string[][] visibleCells = getVisiblesCells();
             int nbOfWay = 0;
-            foreach(string[] x in visibleCells)
+            foreach (string[] x in visibleCells)
             {
-                foreach(string y in x)
+                foreach (string y in x)
                 {
-                    if(" " == y)
+                    if (" " == y)
                     {
                         ++nbOfWay;
                     }
@@ -113,18 +113,18 @@ namespace MazeSolver
             Console.WriteLine("Impossible de se déplacer dans cette direction");
             return false;
         }
-       
+
         public Direction clockRoundCheck(Direction directionOfLast)
         {
-            if(directionOfLast == Direction.Left)
+            if (directionOfLast == Direction.Left)
             {
                 return checkFromLeft(getWalkableCell());
             }
-            else if(directionOfLast == Direction.Up)
+            else if (directionOfLast == Direction.Up)
             {
                 return checkFromUp(getWalkableCell());
             }
-            else if(directionOfLast == Direction.Right)
+            else if (directionOfLast == Direction.Right)
             {
                 return checkFromRight(getWalkableCell());
             }

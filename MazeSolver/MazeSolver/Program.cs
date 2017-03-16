@@ -20,25 +20,23 @@ namespace MazeSolver
                 Console.Clear();
                 gameHelper = new GameHelper();
 
-            gameHelper = new GameHelper();
-
-            Difficulty difficulty = chooseDifficulty();
-            bool mode = isManualMode();
-            gameHelper.initNewGame(difficulty, "Player1");
-            Console.WriteLine("\n/* Partie " + difficulty + " commencée en " + (mode ? "manuel" : "automatique") + "*\\\n");
+                Difficulty difficulty = chooseDifficulty();
+                bool mode = isManualMode();
+                gameHelper.initNewGame(difficulty, "Player1");
+                Console.WriteLine("\n/* Partie " + difficulty + " commencée en " + (mode ? "manuel" : "automatique") + "*\\\n");
 
                 displayMap(gameHelper.getVisiblesCells());
                 System.Threading.Thread.Sleep(500);
 
 
-            if (mode)
-            {
-                runManualMode();
-            }
-            else
-            {
-                runAutoMode();
-            }
+                if (mode)
+                {
+                    runManualMode();
+                }
+                else
+                {
+                    runAutoMode();
+                }
 
                 gameHelper.closeGame();
                 Console.Clear();
@@ -123,7 +121,7 @@ namespace MazeSolver
             string input = Console.ReadLine();
             while (input != "quit" && input != "exit" && input != "return")
             {
-                bool isMoved=false;
+                bool isMoved = false;
                 switch (input.LastOrDefault())
                 {
                     case 'd':
@@ -179,7 +177,7 @@ namespace MazeSolver
         //TODO 
         private static void autoStraightMove(Direction direction, Bot bot)
         {
-            
+
             bool isWallInFront = gameHelper.move(direction);
             bool isACarrefour = false;
             while (!isWallInFront && !isACarrefour)
